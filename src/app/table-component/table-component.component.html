@@ -1,0 +1,24 @@
+<h1 class="title mx-auto mt-5 display-2">TODO's</h1>
+<div class="table-wrapper-scroll-y my-custom-scrollbar mt-2 mx-auto">
+  <table class="table table-light table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Description</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        app-todo-component
+        (selectedItem)="$event.edit ? editTodo($event) : deleteTodo($event)"
+        (changeCompleted)="changeCompletedState($event)"
+        *ngFor="let todo of todos"
+        [id]="todo.id"
+        [title]="todo.title"
+        [completed]="todo.completed"
+      ></tr>
+    </tbody>
+  </table>
+</div>
